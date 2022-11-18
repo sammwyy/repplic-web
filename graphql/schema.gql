@@ -43,8 +43,8 @@ type Mutation {
   invalidateAllSessions: Boolean!
   createSession(payload: CreateSessionDTO!): SessionWithToken!
   createUser(payload: CreateUserDTO!): User!
-  updateUser(payload: UpdateUserDTO!): Boolean!
   updatePassword(payload: UpdatePasswordDTO!): Boolean!
+  verifyUser(code: String!): Boolean!
   createProfile(payload: CreateProfileDTO!): Profile!
   updateProfile(payload: UpdateProfileDTO!): Profile!
 }
@@ -57,10 +57,6 @@ input CreateSessionDTO {
 input CreateUserDTO {
   email: String!
   password: String!
-}
-
-input UpdateUserDTO {
-  email: String
 }
 
 input UpdatePasswordDTO {
