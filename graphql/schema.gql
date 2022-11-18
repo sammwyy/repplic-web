@@ -1,0 +1,81 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  _id: ID!
+  email: String!
+  emailVerified: Boolean!
+  profile: String
+}
+
+type Session {
+  _id: ID!
+  address: String!
+  device: String!
+  date: Float!
+}
+
+type SessionWithToken {
+  _id: ID!
+  address: String!
+  device: String!
+  date: Float!
+  token: String!
+}
+
+type Profile {
+  _id: ID!
+  username: String!
+  displayName: String!
+  bio: String!
+  createdAt: Float!
+}
+
+type Query {
+  getSessions: [Session!]!
+  getCurrentUser: User!
+  findProfile(username: String!): Profile
+}
+
+type Mutation {
+  invalidateSession: Boolean!
+  invalidateAllSessions: Boolean!
+  createSession(payload: CreateSessionDTO!): SessionWithToken!
+  createUser(payload: CreateUserDTO!): User!
+  updateUser(payload: UpdateUserDTO!): Boolean!
+  updatePassword(payload: UpdatePasswordDTO!): Boolean!
+  createProfile(payload: CreateProfileDTO!): Profile!
+  updateProfile(payload: UpdateProfileDTO!): Profile!
+}
+
+input CreateSessionDTO {
+  email: String!
+  password: String!
+}
+
+input CreateUserDTO {
+  email: String!
+  password: String!
+}
+
+input UpdateUserDTO {
+  email: String
+}
+
+input UpdatePasswordDTO {
+  oldPassword: String!
+  newPassword: String!
+}
+
+input CreateProfileDTO {
+  username: String!
+  displayName: String!
+  bio: String!
+}
+
+input UpdateProfileDTO {
+  username: String!
+  displayName: String!
+  bio: String!
+}
